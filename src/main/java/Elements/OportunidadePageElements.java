@@ -15,13 +15,14 @@ public class OportunidadePageElements extends SeleniumUtils{
 	@FindBy(xpath="//*[@id='jobs-list']//*[contains(text(),'Analista de Testes Sênior')]")
 	public List<WebElement> OPORTUNIDADE_ANALISTA_TESTES_SENIOR;
 	
-	@FindBy(css="[id='cidade-select']")
-	public WebElement CIDADE_SELECT;
-	
 	@FindBy(css="[class='numer-of-jobs']")
 	public WebElement NUMERO_DE_VAGAS;
 	
-	
-	
-	
+	@FindBy(css = ".opportunity-by-place")
+	protected List<WebElement> LISTA_CIDADES;
+
+	@FindBy(css = ".acc-content h5")
+	protected List<WebElement> LISTA_OPORTUNIDADES;
+
+
 }

@@ -10,5 +10,10 @@ public class HomePageElements extends SeleniumUtils{
 	@FindBy(css="[class='oportunidades']")
 	public WebElement MENU_OPORTUNIDADES;
 	
+	@FindBy(css="[id='banner-wrap']")
+	public WebElement BANNER_HOME;
+	
+	
+	
 
 }

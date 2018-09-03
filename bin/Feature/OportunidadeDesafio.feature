@@ -6,14 +6,12 @@ Funcionalidade: Acessar site CWI e verificar numero de oportunidades de emprego 
     Dado que estou no site da CWI
 
 	 
-  Cenario: Pesquisa no Site da CWI por vaga de emprego
+  Cenario: Pesquisa no Site da CWI por vaga de emprego em Porto Alegre
     Quando acesso o menu oportunidades
-    E seleciona a cidade de Porto Alegre
-    Entao verifico o numero de vagas disponiveis
+    E visualizo apenas as oportunidades de
+    Entao verifico quantas vagas estao disponiveis para (.*)
     
     
-    Entao acesso o menu Tecnologias
-    E seleciona Fabrica de Teste
-    Entao verifico se a pagina funciona
+    
     
     

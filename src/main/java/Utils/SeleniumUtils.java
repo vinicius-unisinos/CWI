@@ -1,6 +1,14 @@
 package Utils;
 
+import java.awt.AWTException;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import javax.imageio.ImageIO;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -11,22 +19,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
-import Setup.TestRule;
-
 public class SeleniumUtils{
 
-	public static WebDriver driver;
-	
+	protected static WebDriver driver;
+	protected static int contador = 0;
 	public SeleniumUtils() {
-		driver = TestRule.getDriver();
-	}
-	
-	public void sleep(Long milis) {
-		try {
-			Thread.sleep(milis);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		driver = Setup.TestRule.getDriver();
 	}
 	
 	protected static Boolean esperaElemento(WebElement element, long segundos) {
@@ -49,5 +47,16 @@ public class SeleniumUtils{
 			return false;
 		}
 		return webElement != null;
+	}
+
+	protected static void printaTela() throws AWTException {
+		Robot robot = new Robot();
+		BufferedImage bi = robot.createScreenCapture(new Rectangle(0, 0, 1920, 1080));
+		try {
+			ImageIO.write(bi, "jpg", new File("C:/Users/letscode/Desktop/InteliJ/Prints/print" + contador +".jpg"));
+		}catch(IOException io){
+			io.printStackTrace();
+		}
+		contador++;
 	}
 }

@@ -6,7 +6,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/main/java/Feature",glue = { "" })
+@CucumberOptions(features = "C:/Users/Vinicíus/git/CWI-teste/src/main/java/Feature/OportunidadeDesafio.feature",glue = { "" })
 public class OportunidadesTest{
 
 }

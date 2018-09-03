@@ -15,7 +15,7 @@ public class HomePageSteps {
 	}
 	
 	@Quando ("acesso o menu oportunidades")
-	public void acessaMenuOportunidades() {
+	public void acessaMenuOportunidades() throws Exception {
 		System.out.println("Quando acesso o menu oportunidades.");
 		homepage.acessaOMenuOportunidades();
 	}

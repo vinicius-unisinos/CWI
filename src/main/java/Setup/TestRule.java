@@ -1,53 +1,36 @@
 package Setup;
 
-import java.sql.SQLException;
-
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-
 public class TestRule {
 
-	protected static WebDriver driver;
-	public static String nomeCenario;
+	private static WebDriver driver;
+	private static String nomeCenario;
 	
 	@Before
-	public void beforeCenario(Scenario cenario) throws SQLException {
+	public void beforeCenario(Scenario cenario) {
 		String  headless = "false";
 		String pathProjeto = System.getProperty("user.dir");
-		String SO = System.getProperty("os.name").toLowerCase();
-		switch (SO) {
-		case "windows 10":
-			System.setProperty("webdriver.chrome.driver", pathProjeto + "/resources/drivers/chromedriver_Win.exe");
-			break;
-		case "linux":
-			System.setProperty("webdriver.chrome.driver", pathProjeto + "/resources/drivers/chromedriver_Linux");
-			break;	
-		case "mac":
-			System.setProperty("webdriver.chrome.driver", pathProjeto + "/resources/drivers/chromedriver_Mac");
-			break;	
-		default:
-			break;
-		}
-		ChromeOptions options = new ChromeOptions();
-		
+		System.setProperty("webdriver.chrome.driver", pathProjeto + "/resources/drivers/chromedriver_Win.exe");
+
 		if(headless.equalsIgnoreCase("true")) {
-			  options.addArguments("headless");
-			  String pluginToDisable = "Chrome PDF Viewer";
-			  options.addArguments("plugins.plugins_enable", pluginToDisable);
-		      options.addArguments("window-size=1200x600");//A op√ß√£o window-size √© importante para sites responsivos
-		      System.out.println("Iniciando ChromeDriver em modo Headless.");
-		      driver = new ChromeDriver(options);
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("headless");
+			String pluginToDisable = "Chrome PDF Viewer";
+			options.addArguments("plugins.plugins_enable", pluginToDisable);
+			options.addArguments("window-size=1200x600");//A opÁ„o window-size È importante para sites responsivos
+			System.out.println("Iniciando ChromeDriver em modo Headless.");
+			driver = new ChromeDriver(options);
 		}else {
-			System.out.println("Iniciando ChromeDriver.");
+			System.out.println("Iniciando ChromeDriver");
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 		}
-		
 		nomeCenario = cenario.getName();
 		System.out.println("Executando Cenario de Teste: " + nomeCenario);
 	}
@@ -62,9 +45,8 @@ public class TestRule {
 
 	@After
 	public void afterCenario(Scenario cenario) {
-		System.out.println("Finalizando est√¢ncia do chromeDriver");
-		System.out.println("Cen√°rio " + cenario + " fincalizado");		
+		System.out.println("Finalizando inst‚ncia do ChromeDriver");
+		System.out.println("Cen·rio " + cenario + " finalizado");
 		driver.quit();
-		
 	}
 }
